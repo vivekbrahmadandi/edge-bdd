@@ -15,6 +15,7 @@ public class UserHomePage extends PageObject {
      */
 
     //Top navigation bar
+    private By msgToastSuccess = By.xpath("//div[@class='toast-message']");
     private By mnuHeaderDP = By.className("header-dp");
     private By imgLogo = By.id("logo");
     private By lnkPositions = By.xpath("//a[contains(string(),'Positions')]");
@@ -36,8 +37,9 @@ public class UserHomePage extends PageObject {
     /**
      * This section contains all the actions which can be performed on the user home page
      */
-    public String getMnuHeaderDPInitials() {return waitForExpectedElement(mnuHeaderDP).getText();}
+    public String getMnuHeaderDPInitials() {return waitForExpectedElement(mnuHeaderDP).getAttribute("data-username");}
     public boolean isImgLogoDisplayed(){return waitForExpectedElement(imgLogo).isDisplayed();}
+    public String getMsgToastSuccessText(){return waitForExpectedElement(msgToastSuccess).getText();}
     public boolean logOut(){
         try {
             waitForExpectedElement(mnuHeaderDP).click();

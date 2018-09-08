@@ -25,7 +25,7 @@ Feature: Login:- A user should be logged in only if he/she provides correct cred
     When user enters user name "<username>"
     And user enters password "<password>"
     When user clicks on sign in button
-    Then user is able to see the navigation bar and logo
+    Then user is able to login successfully
     And user is also able to see the drop down button with his/her "<initials>"
     Then user logs out
     Examples:

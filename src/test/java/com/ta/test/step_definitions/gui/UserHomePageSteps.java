@@ -34,4 +34,9 @@ public class UserHomePageSteps {
     public void userLogsOut() throws Throwable {
         assertThat(userHomePage.logOut());
     }
+
+    @Then("^user is able to login successfully$")
+    public void userIsAbleToLoginSuccessfully() throws Throwable {
+        assertThat(userHomePage.getMsgToastSuccessText()).isEqualToIgnoringCase("Login successful");
+    }
 }
