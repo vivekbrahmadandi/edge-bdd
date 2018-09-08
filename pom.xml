@@ -22,8 +22,9 @@
                 <testToRun>**/*WebATSuite*.class</testToRun>
             </properties>
         </profile>
+<!--
 
-        <!-- Single Test -->
+        &lt;!&ndash; Single Test &ndash;&gt;
         <profile>
             <id>single</id>
             <properties>
@@ -32,7 +33,7 @@
             </properties>
         </profile>
 
-        <!-- Jenkins environment @ deploy server normally configured on linux -->
+        &lt;!&ndash; Jenkins environment @ deploy server normally configured on linux &ndash;&gt;
         <profile>
             <id>jenkins</id>
             <properties>
@@ -41,15 +42,16 @@
             </properties>
         </profile>
 
-        <!-- Running tets on mobile -->
+        &lt;!&ndash; Running tets on mobile &ndash;&gt;
         <profile>
             <id>mobile</id>
             <properties>
                 <profile.path>/profiles/mobile/config.properties</profile.path>
                 <testToRun>**/*RunWebAppSuite.class</testToRun>
             </properties>
-        </profile>
+        </profile>-->
     </profiles>
+
 
 
     <properties>
@@ -248,7 +250,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>21.0</version>
+            <version>23.0</version>
         </dependency>
 
         <!--PhantomJsDriver Custom to support latest Webdriver-->
