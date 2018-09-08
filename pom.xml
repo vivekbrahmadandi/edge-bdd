@@ -130,7 +130,7 @@
                 <version>${mojo-exec-maven-plugin}</version>
                 <executions>
                     <execution>
-                        <phase>test</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>java</goal>
                         </goals>
