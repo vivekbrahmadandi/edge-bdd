@@ -5,6 +5,7 @@ import com.ta.test.page_objects.gui.LandingPage;
 import com.ta.test.page_objects.gui.UserHomePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebElement;
@@ -39,4 +40,9 @@ public class UserHomePageSteps {
     public void userIsAbleToLoginSuccessfully() throws Throwable {
         assertThat(userHomePage.getMsgToastSuccessText()).isEqualToIgnoringCase("Login successful");
     }
+
+    @Given("^user navigates to \"([^\"]*)\" page$")
+    public void userNavigatesToPage(String pageName) throws Throwable {
+            assertThat(userHomePage.navigateToPages(pageName));
+            }
 }

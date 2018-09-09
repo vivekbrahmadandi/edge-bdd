@@ -1,4 +1,4 @@
-@gui
+@gui @login
 Feature: Login:- A user should be logged in only if he/she provides correct credentials and valid error messages should be displayed wherever required
 
   Scenario Outline: Check all negative login scenarios

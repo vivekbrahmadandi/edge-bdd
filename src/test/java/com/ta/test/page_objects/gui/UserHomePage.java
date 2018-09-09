@@ -50,6 +50,26 @@ public class UserHomePage extends PageObject {
             return false;
         }
     }
-
+    public boolean navigateToPages(String pageName){
+        boolean clickPerformed = false;
+        switch (pageName.toLowerCase()){
+            case "positions":
+                waitForExpectedElement(lnkPositions).click();
+                clickPerformed = true;
+                break;
+            case "resume pool":
+                waitForExpectedElement(lnkResumePool).click();
+                clickPerformed = true;
+                break;
+            case "admin":
+                waitForExpectedElement(lnkAdmin).click();
+                clickPerformed = true;
+                break;
+            default:
+                System.out.println("Provided page doesn't exist");
+                break;
+        }
+        return clickPerformed;
+    }
 
 }

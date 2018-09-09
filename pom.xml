@@ -19,7 +19,7 @@
             </activation>
             <properties>
                 <profile.path>/profiles/dev/config.properties</profile.path>
-                <testToRun>**/*WebATSuite*.class</testToRun>
+                <testToRun>**/*RunWebSuite*.class</testToRun>
             </properties>
         </profile>
 <!--
@@ -203,16 +203,23 @@
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
-            <artifactId>cucumber-testng</artifactId>
+            <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
-            <exclusions>
+            <!--<exclusions>
                 <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
+                    <groupId>testng</groupId>
+                    <artifactId>testng</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions>-->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-core -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
         <dependency>
             <groupId>org.picocontainer</groupId>
             <artifactId>picocontainer</artifactId>
@@ -365,5 +372,29 @@
             <version>${jackson-core}</version>
         </dependency>
 
+
+
+        <dependency>
+            <groupId>com.epam.reportportal</groupId>
+            <artifactId>agent-java-cucumber</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.3.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-epam-reportportal</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/epam/reportportal</url>
+        </repository>
+    </repositories>
 </project>
