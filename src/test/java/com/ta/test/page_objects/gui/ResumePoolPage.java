@@ -24,8 +24,11 @@ public class ResumePoolPage extends PageObject {
     private By txtSearchUntouched = By.xpath("//*[@class='form-control ng-pristine ng-untouched ng-valid']");
     private By lstSelectGroup = By.xpath("//*[@class='ui-select-choices ui-select-choices-content ui-select-dropdown dropdown-menu']");
     private By eleGroupClassifications = By.xpath("//*[@class='ng-binding ng-scope']");
-    private By txtSelectGroupDirty = By.xpath("//input[@class='ui-select-search input-xs ng-valid ng-dirty ng-touched ng-valid-parse']");
-    private By btnSearch = By.xpath("//button[text(),'Search']");
+    private By txtSelectGroupDirty = By.xpath("//*[@class='ui-select-search input-xs ng-pristine ng-valid ng-touched']");
+    private By btnSearch = By.xpath("//button[text()='Search']");
+    private By lblCandidateGroupInfoInResults = By.xpath("//div[@class='candidate-group-info']//span[1]");
+    private By lblNumberOfProfiles = By.xpath("//span[contains(text(),'Showing')]//following-sibling::span");
+    private By lnkNextPage = By.xpath("(//li[@ng-if='directionLinks'])[2]/a[@class='ng-binding']");
 
     /**
      * This section contains all the actions which can be performed on the user home page
@@ -43,7 +46,7 @@ public class ResumePoolPage extends PageObject {
     }
 
     public void enterTxtSelectGroupDirty(String groupName){
-        waitForExpectedElement(txtSelectGroupDirty).sendKeys(groupName);
+        waitForExpectedElement(txtSelectGroupUntouched).sendKeys(groupName);
     }
     public void selectEleGroupClassifications(){
         waitForExpectedElement(eleGroupClassifications).click();
@@ -54,5 +57,15 @@ public class ResumePoolPage extends PageObject {
     public void clickBtnSearch(){
         waitForExpectedElement(btnSearch).click();
     }
+
+    public List<WebElement> getAllProfilesForDisplayedResults(){
+        return WebDriverHelper.getWebDriver().findElements(lblCandidateGroupInfoInResults);
+    }
+
+    public int getNumberOfTotalItemsDisplayed(){
+         return Integer.parseInt(waitForExpectedElement(lblNumberOfProfiles).getText());
+    }
+
+    public void navigateToNextPage(){waitForExpectedElement(lnkNextPage).click();}
 
 }

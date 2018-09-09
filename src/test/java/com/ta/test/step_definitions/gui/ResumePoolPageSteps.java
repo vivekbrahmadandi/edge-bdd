@@ -8,6 +8,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,7 +36,7 @@ public class ResumePoolPageSteps {
     @Then("^user should be able to see the list of existing groups$")
     public void userShouldBeAbleToSeeTheListOfExistingGroups() throws Throwable {
         int numberOfElements = resumePoolPage.getAllGroupElements().size();
-        assertThat(numberOfElements>0);
+        assertThat(numberOfElements > 0);
     }
 
     @And("^user selects the group item \"([^\"]*)\"$")
@@ -54,6 +57,33 @@ public class ResumePoolPageSteps {
 
     @Then("^user sees the list of candidates matching with the search criteria$")
     public void userSeesTheListOfCandidatesMatchingWithTheSearchCriteria() throws Throwable {
-        
+
     }
+
+    @And("^search results have the correct group id \"([^\"]*)\" in it$")
+    public void searchResultsHaveTheCorrectGroupIdInIt(String profile) throws Throwable {
+        List<WebElement> profileGroup;
+        int numberOfElementsInPage = 0;
+        int numberOfSearchResultsDisplayed = resumePoolPage.getNumberOfTotalItemsDisplayed();
+        int numberOfPages = 0;
+        if (numberOfSearchResultsDisplayed % 10 == 0) {
+            numberOfPages = numberOfSearchResultsDisplayed / 10;
+        } else if (numberOfSearchResultsDisplayed <= 10) {
+            numberOfPages =1;
+        } else {
+            numberOfPages = (numberOfSearchResultsDisplayed / 10) + 1;
+        }
+        for (int i = 1; i <= numberOfPages; i++) {
+            profileGroup = resumePoolPage.getAllProfilesForDisplayedResults();
+            for (int j = 0; j < profileGroup.size(); j++) {
+                assertThat(profileGroup.get(j).getText()).containsIgnoringCase(profile);
+            }
+            
+            if (i != numberOfPages) {
+                resumePoolPage.navigateToNextPage();
+            }
+        }
+    }
+
+
 }
