@@ -78,7 +78,7 @@ public class ResumePoolPageSteps {
             for (int j = 0; j < profileGroup.size(); j++) {
                 assertThat(profileGroup.get(j).getText()).containsIgnoringCase(profile);
             }
-            
+
             if (i != numberOfPages) {
                 resumePoolPage.navigateToNextPage();
             }

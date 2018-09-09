@@ -4,6 +4,7 @@ import com.ta.test.framework.PageObject;
 import com.ta.test.framework.helpers.WebDriverHelper;
 import lombok.Getter;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -66,6 +67,11 @@ public class ResumePoolPage extends PageObject {
          return Integer.parseInt(waitForExpectedElement(lblNumberOfProfiles).getText());
     }
 
-    public void navigateToNextPage(){waitForExpectedElement(lnkNextPage).click();}
+    public void navigateToNextPage() throws Throwable{
+
+        WebElement element =  waitForExpectedElement(lnkNextPage);
+        ((JavascriptExecutor) WebDriverHelper.getWebDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(500);
+    }
 
 }
