@@ -72,6 +72,7 @@ public class ResumePoolPage extends PageObject {
         WebElement element =  waitForExpectedElement(lnkNextPage);
         ((JavascriptExecutor) WebDriverHelper.getWebDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         Thread.sleep(500);
+        element.click();
     }
 
 }
